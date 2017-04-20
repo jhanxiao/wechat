@@ -1,0 +1,50 @@
+<view class="header">
+  <view class="tab">
+    <view class="{{navIs == true ? 'navActive' : ''}}" bindtap="changeNav">热点</view>
+    <view class="{{navIs == false ? 'navActive' : ''}}" bindtap="changeNav" bindtap="changeNav">关注</view>
+  </view>
+</view>
+
+<view class="content">
+  <view class="swiper-nav">
+        <view bindtap="handleNav" wx:for="{{swiperNav}}" wx:for-item="item" wx:for-index="idx" data-index="{{idx}}" class="{{index==idx ? 'nav-active' : ''}}">{{item}}</view>
+  </view>
+
+    <swiper class="live-box" current="{{index}}" duration="500" bindchange="handleItem">
+    <block>
+      <swiper-item>
+        <view class="live">
+          <view wx:for="{{contentList}}" wx:for-item="item">
+            <image  src="{{item.src}}" mode="scaleToFill"/>
+            <view class="title">{{item.title}}</view>
+          </view>
+        </view>                  
+      </swiper-item>
+      <swiper-item>
+        <view class="life">
+          <view wx:for="{{contentList}}" wx:for-item="item">
+            <image  src="{{item.src}}" mode="scaleToFill"/>
+            <view class="title">{{item.title}}</view>
+          </view>
+        </view>                
+      </swiper-item>
+      <swiper-item>    
+        <view class="girls">
+          <view wx:for="{{contentList}}" wx:for-item="item">
+            <image  src="{{item.src}}" mode="scaleToFill"/>
+            <view class="title">{{item.title}}</view>
+          </view>
+        </view>               
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class="footer">
+  <view bindtap="toIndex" class="{{pageIndex == 0 ? 'iconfont icon-wode page-active' : 'iconfont icon-wode'}}">首页</view>
+  <view bindtap="toFind" class="{{pageIndex == 1 ? 'iconfont icon-search page-active' : 'iconfont icon-search'}}">发现</view>
+  <view>
+    <view class="{{pageIndex == 2 ? 'camera iconfont icon-xiangji page-active' : 'camera iconfont icon-xiangji'}}" bindtap="camera"></view>
+  </view>
+  <view  bindtap="toMine" class="{{pageIndex == 3 ? 'iconfont icon-wode page-active' : 'iconfont icon-wode'}}">我的</view>
+  <view  bindtap="toExit" class="{{pageIndex == 4 ? 'iconfont icon-tuichu page-active' : 'iconfont icon-tuichu'}}">退出</view>  
+</view>
